@@ -23,7 +23,7 @@
     .images {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       margin: 20px 0;
       flex-wrap: wrap;
     }
@@ -33,6 +33,15 @@
       border-radius: 20px;
       border: 4px solid white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: none;   /* Hidden at first */
+    }
+
+    .caption {
+      display: none;
+      font-size: 22px;
+      color: #6a0572;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     button {
@@ -54,36 +63,29 @@
       color: white;
       position: absolute;
     }
-
-    #message {
-      display: none;
-      font-size: 22px;
-      color: #6a0572;
-      margin-top: 25px;
-      font-weight: bold;
-    }
   </style>
 </head>
 
 <body>
 
   <div class="container">
-    <h1>Will You Be My Valentine? 💕</h1>
+    <h1 id="mainText">Will You Be My Valentine? 💕</h1>
 
     <div class="images">
-      <img src="figure4.jpg" alt="Your image 1">
-      <img src="figure5.jpg" alt="Your image 2">
+      <div>
+        <img id="img1" src="figure4.jpg" alt="Image 1">
+        <p id="cap1" class="caption">✨ Our beautiful journey begins today… ✨</p>
+      </div>
+
+      <div>
+        <img id="img2" src="figure5.jpg" alt="Image 2">
+        <p id="cap2" class="caption">💞 You make my world brighter 💞</p>
+      </div>
     </div>
 
-    <button id="yes" onclick="showMessage()">Yes 💖</button>
+    <button id="yes" onclick="startJourney()">Yes 💖</button>
     <button id="no" onmouseover="moveNo()">No 😢</button>
 
-    <p id="message">
-      Yayyyy! 💕  
-      I knew you would say YES!  
-      You make my world brighter every day 🌸  
-      Happy Valentine’s Day, my love!
-    </p>
   </div>
 
 <script>
@@ -94,8 +96,25 @@ function moveNo() {
   document.getElementById("no").style.top = y + "px";
 }
 
-function showMessage() {
-  document.getElementById("message").style.display = "block";
+function startJourney() {
+  // Change heading
+  document.getElementById("mainText").innerText = "Our Love Journey 💖";
+
+  // Hide buttons
+  document.getElementById("yes").style.display = "none";
+  document.getElementById("no").style.display = "none";
+
+  // Show first image + line
+  setTimeout(() => {
+    document.getElementById("img1").style.display = "block";
+    document.getElementById("cap1").style.display = "block";
+  }, 800);
+
+  // Show second image + line
+  setTimeout(() => {
+    document.getElementById("img2").style.display = "block";
+    document.getElementById("cap2").style.display = "block";
+  }, 1800);
 }
 </script>
 
